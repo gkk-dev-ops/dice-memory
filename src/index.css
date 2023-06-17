@@ -18,3 +18,20 @@
     outline: none;
   }
 }
+
+/* Animations */
+@keyframes roll {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-roll {
+  animation-name: roll;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}

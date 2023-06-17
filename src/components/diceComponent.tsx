@@ -27,7 +27,7 @@ function Dice(props: DiceProps) {
       className="flex h-20 w-20 cursor-pointer items-center justify-center rounded border border-white text-center hover:opacity-80"
       onClick={rollDice}
     >
-      {rolling && <span>🎲</span>}
+      {rolling && <p className="animate-roll text-6xl">🎲</p>}
       {!rolling && currentValue === 1 && (
         <div>
           <div className="h-4 w-4 rounded-full bg-white" />
@@ -40,7 +40,7 @@ function Dice(props: DiceProps) {
         </div>
       )}
       {!rolling && currentValue === 3 && (
-        <div className="flex gap-2 -rotate-45">
+        <div className="flex -rotate-45 gap-2">
           <div className="h-4 w-4 rounded-full bg-white" />
           <div className="h-4 w-4 rounded-full bg-white" />
           <div className="h-4 w-4 rounded-full bg-white" />
@@ -59,20 +59,20 @@ function Dice(props: DiceProps) {
         </div>
       )}
       {!rolling && currentValue === 5 && (
-        <div className="flex flex-wrap gap-2 justify-center items-center">
+        <div className="flex flex-wrap items-center justify-center gap-2">
           <div className="flex gap-6">
-          <div className="h-4 w-4 rounded-full bg-white" />
-          <div className="h-4 w-4 rounded-full bg-white" />
+            <div className="h-4 w-4 rounded-full bg-white" />
+            <div className="h-4 w-4 rounded-full bg-white" />
           </div>
           <div className="h-4 w-4 rounded-full bg-white" />
           <div className="flex gap-6">
-          <div className="h-4 w-4 rounded-full bg-white" />
-          <div className="h-4 w-4 rounded-full bg-white" />
+            <div className="h-4 w-4 rounded-full bg-white" />
+            <div className="h-4 w-4 rounded-full bg-white" />
           </div>
         </div>
       )}
       {!rolling && currentValue === 6 && (
-        <div className="flex flex-wrap gap-2 rotate-90 mt-3">
+        <div className="mt-3 flex rotate-90 flex-wrap gap-2">
           <div className="h-4 w-4 rounded-full bg-white" />
           <div className="h-4 w-4 rounded-full bg-white" />
           <div className="h-4 w-4 rounded-full bg-white" />
