@@ -94,6 +94,26 @@ function App() {
           {/* <p>It was: { sumOfDiceValues }</p> */}
           <p>Your score: {points.toFixed(2)}</p>
         </div>
+        <div className="mx-auto flex gap-4 mt-2">
+        <div
+          onClick={() => setGameConfig({diceAmount: 1, displayTime: 1000})}
+          className="cursor-pointer w-20 rounded border bg-orange-500 p-2 text-center hover:border-orange-500 hover:opacity-80 active:opacity-60"
+        >
+          Easy
+        </div>
+        <div
+          onClick={() => setGameConfig({diceAmount: 3, displayTime: 250})}
+          className="cursor-pointer w-20 rounded border bg-orange-500 p-2 text-center hover:border-orange-500 hover:opacity-80 active:opacity-60"
+        >
+          Medium
+        </div>
+        <div
+          onClick={() => setGameConfig({diceAmount: 3, displayTime: 100})}
+          className="cursor-pointer w-20 rounded border bg-orange-500 p-2 text-center hover:border-orange-500 hover:opacity-80 active:opacity-60"
+        >
+          Hard
+        </div>
+      </div>
       </div>
     </div>
   );

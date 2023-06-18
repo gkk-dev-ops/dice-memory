@@ -1,11 +1,14 @@
 import { diceConfgigPropsType } from "../ts/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function DiceConfiguration(props: diceConfgigPropsType) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
+  useEffect(() => {
+    rememberDicesContainerHeight(props.gameConfig.diceAmount ?? 0);
+  }, [props.gameConfig.diceAmount]);
+  
   function setDiceAmount(newValue: number) {
-    rememberDicesContainerHeight(newValue);
+    // rememberDicesContainerHeight(newValue);
     props.setGameConfig({ ...props.gameConfig, diceAmount: newValue });
   }
   function setDisplayTime(newValue: number) {
@@ -38,6 +41,7 @@ function DiceConfiguration(props: diceConfgigPropsType) {
         )}
         <div>
           <input
+            value={props.gameConfig.diceAmount ? props.gameConfig.diceAmount : ''}
             onChange={(e) => setDiceAmount(+e.target.value)}
             className="w-56 rounded border bg-slate-500 p-2 focus-visible:border-orange-500"
             type="number"
@@ -46,6 +50,7 @@ function DiceConfiguration(props: diceConfgigPropsType) {
         </div>
         <div>
           <input
+            value={(props.gameConfig.displayTime ? props.gameConfig.displayTime / 100 : '')}
             onChange={(e) => setDisplayTime(+e.target.value * 100)}
             className="w-56 rounded border bg-slate-500 p-2 focus-visible:border-orange-500"
             type="number"
