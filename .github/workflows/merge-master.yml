@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Check Out Repo
@@ -26,7 +28,6 @@ jobs:
         uses: phips28/gh-action-bump-version@master
         with:
           tag-prefix: "v"
-          minor-or-major: "patch"
           skip-tag: "false"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
