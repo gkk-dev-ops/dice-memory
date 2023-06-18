@@ -5,6 +5,7 @@ function DiceConfiguration(props: diceConfgigPropsType) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   function setDiceAmount(newValue: number) {
+    rememberDicesContainerHeight(newValue);
     props.setGameConfig({ ...props.gameConfig, diceAmount: newValue });
   }
   function setDisplayTime(newValue: number) {
@@ -19,11 +20,19 @@ function DiceConfiguration(props: diceConfgigPropsType) {
     console.log(props.gameConfig);
     props.gameLoop();
   }
+  function rememberDicesContainerHeight(dicesAmount: number) {
+    // 1 2 3 4 - 1*16 + 2*4
+    // 5 6 7 8 - 2*16 + 3*4
+    // 9 10 11 12 - 3*16 + 4*4
+    const dicesContainerHeight = Math.ceil(dicesAmount / 4) * 80 + (Math.ceil(dicesAmount / 4) + 1) * 16;
+    document.querySelector(".dices-container")?.setAttribute("style", `height: ${dicesContainerHeight}px`);
+  }
+
   return (
     <div className="flex flex-col justify-center gap-5">
       <div className="flex flex-wrap justify-center gap-4 text-center font-light">
         {errorMessage && (
-          <div className="w-72 bg-red-600 p-2 text-center opacity-80">
+          <div className="w-4/5 bg-red-600 p-2 text-center opacity-80">
             {errorMessage}
           </div>
         )}

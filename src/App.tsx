@@ -37,7 +37,6 @@ function App() {
   }
   function gameLoop() {
     setNewGame(true);
-    console.log("loopin", gameConfig.diceAmount);
     const newDices = [];
     for (let i = 0; i < (gameConfig.diceAmount ?? 0); i++) {
       newDices.push({ id: uuidv4(), value: Math.floor(Math.random() * 6) + 1 });
@@ -54,7 +53,6 @@ function App() {
       setDices([]);
     }, gameConfig.displayTime ?? 0);
   }
-
   return (
     <div>
       <div className="container mx-auto flex flex-col gap-4">
@@ -66,7 +64,7 @@ function App() {
           setGameConfig={setGameConfig}
           gameLoop={gameLoop}
         />
-        <div className="mx-auto my-8 flex w-96 flex-wrap justify-center gap-4">
+        <div className={"mx-auto flex w-96 flex-wrap justify-center gap-4 dices-container"}>
           {dices.map((dice: DiceData) => (
             <Dice key={dice.id} value={dice.value}></Dice>
           ))}
@@ -76,7 +74,7 @@ function App() {
             How many dots were actually displayed?
           </p>
           {isCorrectGuess && (
-            <div className=" w-72 bg-green-600 p-2 text-center opacity-80">
+            <div className="w-4/5 bg-green-600 p-2 text-center opacity-80">
               Correct ✅
             </div>
           )}
