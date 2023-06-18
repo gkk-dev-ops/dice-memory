@@ -1,0 +1,35 @@
+name: Merge Master Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Bump Version
+        id: bump_version
+        uses: phips28/gh-action-bump-version@master
+        with:
+          tag-prefix: "v"
+          minor-or-major: "patch"
+          skip-tag: "false"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Build
+        run: npm build
