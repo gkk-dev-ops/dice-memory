@@ -7,9 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "watch": "vite build --watch",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --write .",
+    "prettier": "prettier --write .",
     "clean": "rm -rf dist && rm -rf node_modules",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -18,6 +19,7 @@
     "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-toastify": "^9.1.3",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {

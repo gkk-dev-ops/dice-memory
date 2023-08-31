@@ -12,7 +12,7 @@ The gameplay is simple and intuitive:
 
 1. Enter site.
 2. Fill in game settings - time dices display (in hundreds of milliseconds) and number of dices.
-3. Every time you click stat dices are picked, you  have one guess each time.
+3. Every time you click stat dices are picked, you have one guess each time.
 
 ## Installation
 
